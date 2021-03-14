@@ -1,0 +1,13 @@
+{
+  "type": "",
+  "host": "",
+  "username": "",
+  "password": "",
+  "database": "",
+
+  "entities": ["./src/app/**/typeorm/entities/*.ts"],
+  "migrations": ["./src/database/migrations/*.ts"],
+    "cli": {
+        "migrationsDir": "./src/database/migrations"
+    }
+}
