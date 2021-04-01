@@ -7,6 +7,8 @@
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server/server.ts",
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/server/server.js",
+    "build": "tsc --build",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix"
   },
