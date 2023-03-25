@@ -1,0 +1,26 @@
+service: cedrotech
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+provider:
+  name: aws
+  stage: dev
+  region: us-east-2
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  tracing:
+    apiGateway: true
+  environment:
+    DYNAMODB_TABLE: Customers
+
+  iamRoleStatements: ${file(./iamroles.yml)}
+
+resources:
+  - ${file(./resources.yml)}
+
+functions:
+  - ${file(functions.yml)}
+
+plugins:
+  - serverless-offline
