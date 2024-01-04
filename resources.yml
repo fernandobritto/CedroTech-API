@@ -1,20 +1,16 @@
 Resources:
-  CustomerTable:
+  CedroTechApiTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:provider.environment.DYNAMODB_TABLE}
+      TableName: cedrotech-${sls:stage}-api
       AttributeDefinitions:
-        - AttributeName: id
+        - AttributeName: PK
           AttributeType: S
-        - AttributeName: name
+        - AttributeName: SK
           AttributeType: S
       KeySchema:
-        - AttributeName: id
+        - AttributeName: PK
           KeyType: HASH
-        - AttributeName: name
+        - AttributeName: SK
           KeyType: RANGE
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
-      StreamSpecification:
-        StreamViewType: NEW_AND_OLD_IMAGES
+      BillingMode: PAY_PER_REQUEST

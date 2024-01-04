@@ -1,5 +1,7 @@
+/*.js
 /dist/**
 /build/**
 /coverage/**
-/serverless/**
+/.webpack/**
+/.serverless/**
 /node_modules/**

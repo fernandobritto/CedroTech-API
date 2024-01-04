@@ -1,23 +1,8 @@
-hello:
-  handler: handler.hello
+createServiceOrder:
+  handler: app/functions/createServiceOrder/handler.handler
+  description: Create Service Order endpoint
   events:
     - http:
-        path: /health/test
-        method: get
-        cors: true
-customerInsert:
-  description: ''
-  handler: app/lambdas/consumer/handlers/customerInsert.handler
-  events:
-    - http:
-        path: customer
+        path: /service-order
         method: post
-        cors: true
-customerTrigger:
-  description: ''
-  handler: app/lambdas/consumer/handlers/customerTrigger.handler
-  events:
-    - http:
-        path: customer
-        method: get
         cors: true
