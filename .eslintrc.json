@@ -1,13 +1,28 @@
 {
   "env": {
-    "commonjs": true,
     "es2021": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
-  "extends": ["standard", "prettier", "prettier/prettier", "plugin:prettier/recommended"],
-  "overrides": [],
+  "extends": ["standard-with-typescript", "standard", "prettier", "prettier/prettier", "plugin:prettier/recommended"],
   "parserOptions": {
-    "ecmaVersion": "latest"
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
-  "rules": {}
+  "plugins": ["simple-import-sort", "eslint-plugin-import-helpers"],
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": ["/^node/", "module", "/^~//", ["parent", "sibling", "index"]],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ]
+  }
 }
