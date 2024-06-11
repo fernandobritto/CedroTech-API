@@ -12,9 +12,11 @@
     "rootDir": "./",
     "baseUrl": ".",
     "paths": {
-      "@database/*": ["app/database/*"],
-      "@functions/*": ["app/functions/*"],
-      "@middlewares/*": ["app/middlewares/*"],
+      "@application/*": ["src/application/*"],
+      "@common/*": ["src/common/*"],
+      "@domain/*": ["src/domain/*"],
+      "@infrastructure/*": ["src/infrastructure/*"],
+      "@presenter/*": ["src/presenter/*"],
       "@tests/*": ["tests/*"]
     },
     "removeComments": true,

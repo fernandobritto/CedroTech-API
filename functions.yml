@@ -1,8 +1,0 @@
-createServiceOrder:
-  handler: app/functions/createServiceOrder/handler.handler
-  description: Create Service Order endpoint
-  events:
-    - http:
-        path: /service-order
-        method: post
-        cors: true
