@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const slsw = require('serverless-webpack')
 
 module.exports = {
@@ -16,10 +17,12 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
     alias: {
-      '@': `${__dirname}/app`,
-      '@database': `${__dirname}/app/database`,
-      '@functions': `${__dirname}/app/functions`,
-      '@middlewares': `${__dirname}/app/middlewares`,
+      '@': `${__dirname}/src`,
+      '@application': `${__dirname}/src/application`,
+      '@common': `${__dirname}/src/common`,
+      '@domain': `${__dirname}/src/domain`,
+      '@infrastructure': `${__dirname}/src/infrastructure`,
+      '@presenter': `${__dirname}/src/presenter`,
       '@tests': `${__dirname}/tests`
     }
   },

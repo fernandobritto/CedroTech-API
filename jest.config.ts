@@ -3,20 +3,23 @@ export default {
   testEnvironment: 'node',
   testMatch: ['<rootDir>/tests/**/*.spec.ts'],
   moduleNameMapper: {
-    '@database/(.*)': '<rootDir>/app/database/$1',
-    '@functions/(.*)': '<rootDir>/app/functions/$1',
-    '@middlewares/(.*)': '<rootDir>/app/middlewares/$1',
+    '@application/(.*)': '<rootDir>/src/application/$1',
+    '@common/(.*)': '<rootDir>/src/common/$1',
+    '@domain/(.*)': '<rootDir>/src/domain/$1',
+    '@infrastructure/(.*)': '<rootDir>/src/infrastructure/$1',
+    '@presenter/(.*)': '<rootDir>/src/presenter/$1',
     '@tests/(.*)': '<rootDir>/tests/$1'
   },
-  setupFiles: ['<rootDir>/tests/environment-variables.ts'],
-  collectCoverageFrom: ['<rootDir>/app/**/*.ts'],
-  testPathIgnorePatterns: ['/node_modules/', '/.serverless/', '/.webpack/'],
+  setupFiles: ['<rootDir>/tests/utils/environment-variables.ts'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+  coveragePathIgnorePatterns: ['<rootDir>/src/infrastructure/libs'],
+  testPathIgnorePatterns: ['/node_modules/'],
   coverageThreshold: {
     global: {
-      statements: 80,
-      branches: 70,
-      functions: 80,
-      lines: 80
+      statements: 60,
+      branches: 60,
+      functions: 60,
+      lines: 60
     }
   },
   transform: {

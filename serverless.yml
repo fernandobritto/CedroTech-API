@@ -1,26 +1,47 @@
-service: cedrotech
+service: centro-tech-api
+frameworkVersion: '3'
+configValidationMode: error
 
 provider:
   name: aws
-  stage: dev
-  region: us-east-1
-  runtime: nodejs18.x
-  iam:
-    role:
-      statements: ${file(./iamroles.yml)}
-resources:
-  - ${file(./resources.yml)}
-functions:
-  - ${file(./functions.yml)}
+  stage: ${opt:stage, 'homolog'}
+  region: 'us-east-1'
+  runtime: nodejs20.x
+
+  stackTags:
+    Name: ${self:service}
+    Product: "centro-tech-api"
+
+  environment:
+    NODE_OPTIONS: --enable-source-maps
+    AWS_SERVICE_NAME: ${self:service}
+    AWS_D_REGION: ${aws:region}
+    AWS_STAGE_NAME: ${sls:stage}
+    AWS_CUSTOMER_TABLE_NAME: 
+      Ref: CetroTechDynamoDBTable
+
+   
+  iamRoleStatements: ${file(./aws/iamroles.yml)}
+        
+package:
+  individually: true
 
 custom:
   webpack:
     webpackConfig: ./webpack.config.js
+
   prune:
     automatic: true
     number: 1
 
+functions:
+  - ${file(./aws/functions.yml)}
+
+resources:
+  - ${file(./aws/resources.yml)}
+
 plugins:
   - serverless-webpack
+  - serverless-plugin-resource-tagging
   - serverless-prune-plugin
   - serverless-offline

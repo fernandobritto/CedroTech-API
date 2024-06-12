@@ -1,0 +1,14 @@
+healthCheck:
+  handler: src/presenter/health-check-handler.handler
+  events:
+    - http:
+        path: cetrotech/health-check
+        method: GET
+        cors: true
+CreateServiceOrder:
+  handler: src/presenter/create-service-order-handler.handler
+  events:
+    - http:
+        path: cetrotech/service-order
+        method: POST
+        cors: true
