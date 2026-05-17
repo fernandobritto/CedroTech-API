@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -31,3 +33,16 @@ jobs:
 
       - name: Run unit tests with coverage
         run: npm run test -- --coverage
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=CedroTech-API
+            -Dsonar.sources=src
+            -Dsonar.tests=src
+            -Dsonar.test.inclusions=**/*.spec.ts
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
