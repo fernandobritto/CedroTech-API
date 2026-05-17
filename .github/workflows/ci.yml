@@ -38,10 +38,12 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
         with:
           args: >
-            -Dsonar.projectKey=CedroTech-API
-            -Dsonar.organization=fernandobritto
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
             -Dsonar.sources=src
             -Dsonar.tests=src
             -Dsonar.test.inclusions=**/*.spec.ts
